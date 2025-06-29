@@ -1,0 +1,114 @@
+{
+  "info": {
+    "_postman_id": "student-registration-api-collection",
+    "name": "Student Registration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login (Get Token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "admin", "type": "text" },
+            { "key": "password", "value": "admin123", "type": "text" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8000/token", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["token"] }
+      }
+    },
+    {
+      "name": "Create User (Admin Only)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"username\": \"user1\",\n  \"password\": \"userpassword\"\n}"
+        },
+        "url": { "raw": "http://localhost:8000/users/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["users", ""] }
+      }
+    },
+    {
+      "name": "Create Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"1234567890\",\n  \"date_of_birth\": \"2000-01-01\",\n  \"gender\": \"Male\",\n  \"address_line1\": \"123 Main St\",\n  \"address_line2\": \"Apt 4B\",\n  \"city\": \"Metropolis\",\n  \"state\": \"State\",\n  \"postal_code\": \"12345\",\n  \"country\": \"Country\",\n  \"highest_education\": \"Bachelor's\",\n  \"institution_name\": \"University Name\",\n  \"graduation_year\": 2022,\n  \"current_occupation\": \"Student\",\n  \"years_of_experience\": 0,\n  \"previous_company\": \"\",\n  \"course_name\": \"Python Bootcamp\",\n  \"course_duration\": \"3 months\",\n  \"preferred_batch_timing\": \"Morning\",\n  \"preferred_start_date\": \"2024-07-01\",\n  \"how_did_you_hear\": \"Internet\",\n  \"expectations\": \"Learn Python\",\n  \"previous_programming_experience\": true,\n  \"programming_languages_known\": \"Python, Java\"\n}"
+        },
+        "url": { "raw": "http://localhost:8000/registrations/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["registrations", ""] }
+      }
+    },
+    {
+      "name": "Get All Registrations",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://localhost:8000/registrations/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["registrations", ""] }
+      }
+    },
+    {
+      "name": "Get Single Registration",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://localhost:8000/registrations/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["registrations", "1"] }
+      }
+    },
+    {
+      "name": "Update Registration",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"1234567890\",\n  \"date_of_birth\": \"2000-01-01\",\n  \"gender\": \"Male\",\n  \"address_line1\": \"123 Main St\",\n  \"address_line2\": \"Apt 4B\",\n  \"city\": \"Metropolis\",\n  \"state\": \"State\",\n  \"postal_code\": \"12345\",\n  \"country\": \"Country\",\n  \"highest_education\": \"Bachelor's\",\n  \"institution_name\": \"University Name\",\n  \"graduation_year\": 2022,\n  \"current_occupation\": \"Student\",\n  \"years_of_experience\": 0,\n  \"previous_company\": \"\",\n  \"course_name\": \"Python Bootcamp\",\n  \"course_duration\": \"3 months\",\n  \"preferred_batch_timing\": \"Morning\",\n  \"preferred_start_date\": \"2024-07-01\",\n  \"how_did_you_hear\": \"Internet\",\n  \"expectations\": \"Learn Python\",\n  \"previous_programming_experience\": true,\n  \"programming_languages_known\": \"Python, Java\"\n}"
+        },
+        "url": { "raw": "http://localhost:8000/registrations/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["registrations", "1"] }
+      }
+    },
+    {
+      "name": "Delete Registration",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://localhost:8000/registrations/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["registrations", "1"] }
+      }
+    },
+    {
+      "name": "Export Registrations (CSV, Admin Only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://localhost:8000/export/registrations", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["export", "registrations"] }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "access_token", "value": "" }
+  ]
+} 
