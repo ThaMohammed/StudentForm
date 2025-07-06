@@ -5,7 +5,7 @@ A web application for managing student registrations for software training class
 ## Features
 
 - User authentication and authorization.
-- Student registration form
+- Student registration form.
 - Dashboard for viewing registrations
 - Admin features:
   - User management
