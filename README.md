@@ -6,7 +6,7 @@ A web application for managing student registrations for software training class
 
 - User authentication and authorization.
 - Student registration form.
-- Dashboard for viewing registrations
+- Dashboard for viewing registrations.
 - Admin features:
   - User management
   - Export registrations to CSV
