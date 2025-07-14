@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://azkastudent.com/api";
 
 export async function login(username, password) {
   const response = await fetch(`${API_URL}/token`, {
